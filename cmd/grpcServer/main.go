@@ -9,6 +9,7 @@ import (
 	"github.com/Ndav07/gRPC/internal/service"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
@@ -25,7 +26,7 @@ func main() {
 
 	reflection.Register(grpcServer)
 
-	lis, err := net.Listen("tpc", "50051"); if err != nil {
+	lis, err := net.Listen("tcp", ":50051"); if err != nil {
 		panic(err)
 	}
 
